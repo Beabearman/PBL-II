@@ -1,0 +1,21 @@
+Z:\PBL II\animação PBL II\animação PBL II\bin\Debug\animação PBL II.exe.config
+Z:\PBL II\animação PBL II\animação PBL II\bin\Debug\animação PBL II.exe
+Z:\PBL II\animação PBL II\animação PBL II\bin\Debug\animação PBL II.pdb
+Z:\PBL II\animação PBL II\animação PBL II\bin\Debug\OxyPlot.dll
+Z:\PBL II\animação PBL II\animação PBL II\bin\Debug\OxyPlot.Wpf.dll
+Z:\PBL II\animação PBL II\animação PBL II\bin\Debug\OxyPlot.Wpf.Shared.dll
+Z:\PBL II\animação PBL II\animação PBL II\bin\Debug\OxyPlot.xml
+Z:\PBL II\animação PBL II\animação PBL II\bin\Debug\OxyPlot.Wpf.xml
+Z:\PBL II\animação PBL II\animação PBL II\bin\Debug\OxyPlot.Wpf.Shared.xml
+Z:\PBL II\animação PBL II\animação PBL II\obj\Debug\animação PBL II.csproj.AssemblyReference.cache
+Z:\PBL II\animação PBL II\animação PBL II\obj\Debug\MainWindow.baml
+Z:\PBL II\animação PBL II\animação PBL II\obj\Debug\MainWindow.g.cs
+Z:\PBL II\animação PBL II\animação PBL II\obj\Debug\App.g.cs
+Z:\PBL II\animação PBL II\animação PBL II\obj\Debug\animação PBL II_MarkupCompile.cache
+Z:\PBL II\animação PBL II\animação PBL II\obj\Debug\animação PBL II.g.resources
+Z:\PBL II\animação PBL II\animação PBL II\obj\Debug\animação_PBL_II.Properties.Resources.resources
+Z:\PBL II\animação PBL II\animação PBL II\obj\Debug\animação PBL II.csproj.GenerateResource.cache
+Z:\PBL II\animação PBL II\animação PBL II\obj\Debug\animação PBL II.csproj.CoreCompileInputs.cache
+Z:\PBL II\animação PBL II\animação PBL II\obj\Debug\anima__o.596C76CD.Up2Date
+Z:\PBL II\animação PBL II\animação PBL II\obj\Debug\animação PBL II.exe
+Z:\PBL II\animação PBL II\animação PBL II\obj\Debug\animação PBL II.pdb
