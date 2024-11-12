@@ -16,6 +16,6 @@ Z:\PBL II\animação PBL II\animação PBL II\obj\Debug\animação PBL II.g.reso
 Z:\PBL II\animação PBL II\animação PBL II\obj\Debug\animação_PBL_II.Properties.Resources.resources
 Z:\PBL II\animação PBL II\animação PBL II\obj\Debug\animação PBL II.csproj.GenerateResource.cache
 Z:\PBL II\animação PBL II\animação PBL II\obj\Debug\animação PBL II.csproj.CoreCompileInputs.cache
-Z:\PBL II\animação PBL II\animação PBL II\obj\Debug\anima__o.596C76CD.Up2Date
 Z:\PBL II\animação PBL II\animação PBL II\obj\Debug\animação PBL II.exe
 Z:\PBL II\animação PBL II\animação PBL II\obj\Debug\animação PBL II.pdb
+Z:\PBL II\animação PBL II\animação PBL II\obj\Debug\animação PBL II.csproj.CopyComplete

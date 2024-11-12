@@ -2,6 +2,10 @@
 using OxyPlot.Series;
 using System;
 using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace PBL_II_WPF
 {
@@ -27,29 +31,98 @@ namespace PBL_II_WPF
             double[] vetorVelocidadeRes = CalcularVetorVelocidadeRes(velocidadeMotor, velocidadeCorrenteza, angulo);
             double tempoTravessia = largura / vetorVelocidadeRes[1];
 
-            // Calcular as coordenadas e plotar no gráfico
-            PlotarGrafico(vetorVelocidadeRes, tempoTravessia);
+            // Calcular as coordenadas da trajetória do barco
+            var pontosTrajeto = CalcularCoordenadas(vetorVelocidadeRes, tempoTravessia);
+
+            // Iniciar a animação do barco
+            IniciarAnimacaoBarco(pontosTrajeto, tempoTravessia);
         }
 
-        private void PlotarGrafico(double[] vetorVelocidadeRes, double tempoTravessia)
+        private void IniciarAnimacaoBarco(System.Collections.Generic.List<System.Windows.Point> pontosTrajeto, double tempoTravessia)
         {
-            // Calcular as coordenadas ao longo do tempo
+            // Limpar o gráfico
+            var points = new LineSeries { Title = "Trajetória" };
+
+            foreach (var ponto in pontosTrajeto)
+            {
+                points.Points.Add(new DataPoint(ponto.X, ponto.Y));
+            }
+
+            var plotModel = new PlotModel { Title = "Trajetória do Barco" };
+            plotModel.Series.Add(points);
+            plotView.Model = plotModel;
+
+            // Animação do Barco
+            double totalTempo = tempoTravessia;
+            double intervaloTempo = totalTempo / pontosTrajeto.Count;
+            int i = 0;
+
+            // Definir o início da animação
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(intervaloTempo);
+            timer.Tick += (s, e) =>
+            {
+                if (i < pontosTrajeto.Count)
+                {
+                    // Obter as coordenadas do ponto a ser movido
+                    var ponto = pontosTrajeto[i];
+                    // Animar a posição do barco
+                    AnimarBarco(ponto.X, ponto.Y);
+                    i++;
+                }
+                else
+                {
+                    timer.Stop(); // Parar a animação quando atingir o último ponto
+                }
+            };
+
+            // Iniciar o timer
+            timer.Start();
+        }
+
+        private void AnimarBarco(double posX, double posY)
+        {
+            // Acessar o TranslateTransform diretamente
+            var translateTransform = ((TranslateTransform)((TransformGroup)Barco.RenderTransform).Children[3]);
+
+            // Animação para o movimento no eixo X (para atravessar o rio)
+            DoubleAnimation animX = new DoubleAnimation
+            {
+                To = posX,
+                Duration = TimeSpan.FromMilliseconds(500), // Velocidade da animação
+                EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseInOut }
+            };
+
+            // Animação para o movimento no eixo Y (com a correnteza)
+            DoubleAnimation animY = new DoubleAnimation
+            {
+                To = posY,
+                Duration = TimeSpan.FromMilliseconds(500),
+                EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseInOut }
+            };
+
+            // Aplicar as animações
+            translateTransform.BeginAnimation(TranslateTransform.XProperty, animX);
+            translateTransform.BeginAnimation(TranslateTransform.YProperty, animY);
+        }
+
+        private System.Collections.Generic.List<System.Windows.Point> CalcularCoordenadas(double[] vetorVelocidadeRes, double tempoTravessia)
+        {
             int numIntervalos = 10;
             double deltaT = tempoTravessia / numIntervalos;
-            var points = new LineSeries { Title = "Trajetória" };
+            var pontos = new System.Collections.Generic.List<System.Windows.Point>();
 
             for (int i = 0; i <= numIntervalos; i++)
             {
                 double t = i * deltaT;
+
                 double coordX = vetorVelocidadeRes[0] * t;
                 double coordY = vetorVelocidadeRes[1] * t;
-                points.Points.Add(new DataPoint(coordX, coordY));
+
+                pontos.Add(new System.Windows.Point(coordX, coordY));
             }
 
-            // Configurar o gráfico e exibir
-            var plotModel = new PlotModel { Title = "Trajetória do Barco" };
-            plotModel.Series.Add(points);
-            plotView.Model = plotModel;
+            return pontos;
         }
 
         private double[] CalcularVetorVelocidadeRes(double velocidadeMotor, double velocidadeCorrenteza, double angulo)

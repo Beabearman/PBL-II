@@ -5,23 +5,36 @@
         Title="Simulação de Travessia" Height="450" Width="800">
     <Grid>
         <!-- Entradas de Dados -->
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,15,0,0">
             <TextBlock Text="Largura do Rio (m)" />
-            <TextBox Name="txtLargura" Width="200" Margin="5" />
+            <TextBox x:Name="txtLargura" Width="200" Margin="5" />
 
             <TextBlock Text="Velocidade do Motor (m/s)" />
-            <TextBox Name="txtVelocidadeMotor" Width="200" Margin="5" />
+            <TextBox x:Name="txtVelocidadeMotor" Width="200" Margin="5" />
 
             <TextBlock Text="Velocidade da Correnteza (m/s)" />
-            <TextBox Name="txtVelocidadeCorrenteza" Width="200" Margin="5" />
+            <TextBox x:Name="txtVelocidadeCorrenteza" Width="200" Margin="5" />
 
             <TextBlock Text="Ângulo (graus)" />
-            <TextBox Name="txtAngulo" Width="200" Margin="5" />
+            <TextBox x:Name="txtAngulo" Width="200" Margin="5" />
 
             <Button Content="Calcular" Width="200" Margin="5" Click="Calcular_Click" />
         </StackPanel>
 
         <!-- Gráfico -->
-        <oxy:PlotView Name="plotView" Margin="10,221,10,10" />
+        <oxy:PlotView x:Name="plotView" Margin="10,221,10,10" />
+
+        <!-- Barco Representado como Imagem -->
+        <Image x:Name="Barco" HorizontalAlignment="Left" Height="168" Margin="301,303,0,0" VerticalAlignment="Top" Width="175" 
+               Source="/pngwing.com.png" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform x:Name="translateTransform"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
     </Grid>
 </Window>
